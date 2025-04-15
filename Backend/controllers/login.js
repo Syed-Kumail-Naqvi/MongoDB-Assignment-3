@@ -20,10 +20,11 @@ const login = async (req, res) => {
             return res.status(404).json({ Message : 'Invalid Password!' })
         }
 
-        jwt.sign({email : userEmail, password : userPassword}, process.env.PRIVATEKEY, function (err, token){
-            res.status(200).json({Message : "Login Successful!", status : 200  ,Token : token})
-        })
-    
+        // jwt.sign({email : userEmail, password : userPassword}, process.env.PRIVATEKEY, function (err, token){
+        //     res.status(200).json({Message : "Login Successful!", status : 200  ,Token : token})
+        // })
+        
+        res.status(200).json({Message : "Login Successful!"})
     }
 
     catch (error) {

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express() ;
 const dotenv = require('dotenv');
 dotenv.config();
+const middleware = require('./middleware/auth')
 const database = require('./database/database')
 const PORT = process.env.PORT ;
 
