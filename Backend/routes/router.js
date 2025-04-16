@@ -10,6 +10,6 @@ const login = require('../controllers/login');
 Router.post('/signup', auth, signUp) ;
 
 // Login Route
-Router.post('/login', auth, login) ;
+Router.post('/login', login) ;
 
 module.exports = Router ;

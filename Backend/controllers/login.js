@@ -4,7 +4,7 @@ const userModel = require('../models/userModel');
 
 const login = async (req, res) => {
     let { userEmail, userPassword } = req.body
-    console.log('In Login Controller Section!', userEmail, userPassword);
+    console.log('In Login Controller Section!', 'Email: ', userEmail, 'Password: ', userPassword);
 
     try {
         let emailMatched = await userModel.findOne({ email: userEmail })

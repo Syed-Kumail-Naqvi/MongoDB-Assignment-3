@@ -13,7 +13,7 @@ try {
     
 
         if(existingEmail){
-            return res.status(409).send.json({ Message : 'Email Already Exists!'})
+            return res.status(409).json({ Message : 'Email Already Exists!'})
         }
 
         next();
