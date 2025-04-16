@@ -9,10 +9,10 @@ const addProduct = require('../controllers/addProduct');
 const getProducts = require('../controllers/getProduct');
 
 // Signup Route
-Router.post('/signup', auth, signUp) ;
+Router.post('/signup', auth, signUp);
 
 // Login Route
-Router.post('/login', login) ;
+Router.post('/login', login);
 
 // Add-Product Route
 Router.post('/addProduct', addProduct);
@@ -20,4 +20,4 @@ Router.post('/addProduct', addProduct);
 // Show-Product Route
 Router.get('/showProduct', getProducts);
 
-module.exports = Router ;
+module.exports = Router;

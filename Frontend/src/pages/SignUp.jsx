@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
-import '../App.css'; 
-import { Navigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "../App.css";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const [form, setForm] = useState({ name: '', email: '', password: '', age: '' });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    age: "",
+  });
 
+  const navigate = useNavigate();
+  
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Sign Up Data:', form);
+    console.log("Sign Up Data:", form);
   };
 
   return (
@@ -51,7 +58,9 @@ const SignUp = () => {
           onChange={handleChange}
           required
         />
-        <button onClick= { ()=> Navigate('/login')} type="submit">Create Account</button>
+        <button onClick={() => navigate("/login")} type="submit">
+          Create Account
+        </button>
       </form>
     </div>
   );
