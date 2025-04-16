@@ -5,7 +5,7 @@ const signUp = async (req, res) => {
     console.log('In Signup Controller Section!');
     
   let { userName, userEmail, userPassword, userAge } = req.body
-
+  
   try {
      
      let hashPass = await bcrypt.hash(userPassword, 10)
@@ -23,6 +23,7 @@ const signUp = async (req, res) => {
   } 
   catch (error) {
     console.log(' Error! ', error);
+    res.json({Message: error.message})
   }
 }
 

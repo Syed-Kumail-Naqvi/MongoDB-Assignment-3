@@ -7,4 +7,4 @@ let productSchema = mongoose.Schema({
     imageUrl: String
 });
 
-module.exports = mongoose.model('products', productSchema) ;
+module.exports = mongoose.model('Products:', productSchema) ;

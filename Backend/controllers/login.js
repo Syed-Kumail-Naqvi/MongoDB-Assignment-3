@@ -1,10 +1,10 @@
 let bcrypt = require('bcrypt');
 const userModel = require('../models/userModel');
-// let jwt = require('jsonwebtoken');
+let jwt = require('jsonwebtoken');
 
 const login = async (req, res) => {
     let { userEmail, userPassword } = req.body
-    console.log('In Login Controller Section!', 'Email: ', userEmail, 'Password: ', userPassword);
+    console.log('In Login Controller Section!');
 
     try {
         let emailMatched = await userModel.findOne({ email: userEmail })
@@ -20,14 +20,21 @@ const login = async (req, res) => {
             return res.status(404).json({ Message : 'Invalid Password!' })
         }
 
-        // jwt.sign({email : userEmail, password : userPassword}, process.env.PRIVATEKEY, function (err, token){
-        //     res.status(200).json({Message : "Login Successful!", status : 200  ,Token : token})
-        // })
+        const token = jwt.sign({
+            userID : emailMatched._id.toString(),
+            userName : emailMatched.name,
+            userEmail : emailMatched.email,
+            userAge : emailMatched.age
+        }, process.env.PRIVATEKEY)
+    
+        console.log("Token:", token);
         
-        res.status(200).json({Message : "Login Successful!"})
+
+        res.status(200).json({ Message : "Login Successful!"})
     }
 
     catch (error) {
+        console.log("Error:", error);
         res.status(500).json({ Message : error.message})
     }
 }
