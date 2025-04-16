@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import '../App.css'; 
+import { Navigate } from 'react-router-dom';
 
 const SignUp = () => {
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '', age: '' });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,7 +29,7 @@ const SignUp = () => {
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Email Address"
           value={form.email}
           onChange={handleChange}
           required
@@ -41,7 +42,16 @@ const SignUp = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit">Create Account</button>
+
+        <input
+          type="text"
+          name="age"
+          placeholder="Age"
+          value={form.age}
+          onChange={handleChange}
+          required
+        />
+        <button onClick= { ()=> Navigate('/login')} type="submit">Create Account</button>
       </form>
     </div>
   );

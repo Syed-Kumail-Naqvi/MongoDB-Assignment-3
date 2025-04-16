@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+// import { useForm } from 'react-hook-form'
+import { useState, Navigate} from 'react'
+// import { useNavigate } from 'react-router-dom' 
 import '../App.css'; 
 
 const Login = () => {
@@ -20,7 +22,7 @@ const Login = () => {
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Email Address"
           value={form.email}
           onChange={handleChange}
           required
@@ -33,7 +35,7 @@ const Login = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit">Login</button>
+        <button onClick={()=> Navigate('/home')} type="submit">Login</button>
       </form>
     </div>
   );
