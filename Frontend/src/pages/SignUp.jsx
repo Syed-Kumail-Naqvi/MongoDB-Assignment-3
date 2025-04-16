@@ -11,7 +11,7 @@ const SignUp = () => {
   });
 
   const navigate = useNavigate();
-  
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -20,6 +20,29 @@ const SignUp = () => {
     e.preventDefault();
     console.log("Sign Up Data:", form);
   };
+
+  const userSignup = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+  
+      const data = await res.json(); // Wait for JSON to parse
+  
+      alert(data.message);
+  
+      if (data.signup) {
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+    }
+  };
+  
 
   return (
     <div className="auth-container">
@@ -58,7 +81,7 @@ const SignUp = () => {
           onChange={handleChange}
           required
         />
-        <button onClick={() => navigate("/login")} type="submit">
+        <button onClick={userSignup()}>
           Create Account
         </button>
       </form>
